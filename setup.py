@@ -9,6 +9,11 @@ def get_requirements(file_path:str)->list[str]:
     with open(requirements.txt) as f:
         requirements=f.readlines()
         requirements=[req.replace("\n","") for req in requirements]
+        
+        if "-e ." in requirements:
+            requirements.remove("-e .")
+    return requirements
+
 setup(
     name="ml_project",
     version="0.1",
